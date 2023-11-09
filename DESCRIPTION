@@ -1,0 +1,10 @@
+Package: imdvizzer
+Title: Visualising UK Indices Of Multiple Deprivation
+Version: 0.0.0.9000
+Authors@R: 
+    person("Tom", "Smith", , "tomsmith_uk@hotmail.com", role = c("aut", "cre"))
+Description: Visualises the UK's Indices of Multiple Deprivation (IMD), in as many (or as few) ways as needed.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
