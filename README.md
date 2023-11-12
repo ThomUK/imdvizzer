@@ -1,12 +1,25 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# imdvizzer
+# {imdvizzer}
 
-This project is designed to visualise the UK’s Index of Multiple
-Deprivation (IMD) data in as many ways (or as few) as needed. It uses
-the [{geographr}](https://github.com/humaniverse/geographr) package for
-map geometries and area lookup files, and the
+{imdvizzer} is designed to visualise England’s [Index of Multiple
+Deprivation
+(IMD)](https://en.wikipedia.org/wiki/Multiple_deprivation_index) data in
+as many ways (or as few) as needed.
+
+The main data source is the [2019 IMD data from the Ministry of Housing,
+Communities & Local
+Government](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
+This data was published with a [suite of additional mapping
+resources](https://www.gov.uk/guidance/english-indices-of-deprivation-2019-mapping-resources).
+In particular this [zoomable
+map](https://dclgapps.communities.gov.uk/imd/iod_index.html) may be of
+interest.
+
+For convenience and ease of extension {imdvizzer} uses the
+[{geographr}](https://github.com/humaniverse/geographr) package for map
+geometries and area lookup files, and the
 [{IMD}](https://github.com/humaniverse/IMD) package for IMD data.
 
 ## Usage

@@ -40,7 +40,8 @@ map_imd_icb <- function(icb_name, include_title = TRUE){
     ggplot2::scale_fill_manual(values = colorRampPalette(c("#71196E", "#FFFFFF"))(10)) +
     ggplot2::theme_void() +
     ggplot2::labs(
-      "title" = plot_title,
+      title = plot_title,
+      fill = "IMD decile",
       caption = "Data Source: MHCLG"
     )
 
