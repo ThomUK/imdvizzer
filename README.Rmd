@@ -15,4 +15,45 @@ knitr::opts_chunk$set(
 
 # imdvizzer
 
-This project is designed to visualise the UK's Index of Multiple Deprivation (IMD) data in as many ways (or as few) as needed.  
+This project is designed to visualise the UK's Index of Multiple Deprivation (IMD) data in as many ways (or as few) as needed.  It uses the [{geographr}](https://github.com/humaniverse/geographr) package for map geometries and area lookup files, and the [{IMD}](https://github.com/humaniverse/IMD) package for IMD data.
+
+## Usage
+
+The first function implemented plots maps of IMD data for each English Integrated Care Board (ICB).  It can be used as follows:
+
+```{r example, echo=TRUE, message=FALSE, warning=FALSE}
+library(imdvizzer)
+
+map_imd_icb("NHS Nottingham and Nottinghamshire Integrated Care Board")
+
+```
+
+## All English ICBs
+
+This is the 2019 IMD data plotted for every ICB.  The individual regions plotted are [Lower Layer Super Output Areas (LSOAs)](https://en.wikipedia.org/wiki/GSS_coding_system#Neighbourhood_Statistics_Geography), which are consistent small geographical regions with populations of on average 1500 people.  Note that the x and y axis scales of these individual maps are not intended to be consistent.  The colour scales are consistent across the maps.
+
+```{r all_icbs, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+
+icb_names <- geographr::lookup_lsoa11_sicbl22_icb22_ltla22 |>
+  dplyr::arrange(icb22_name) |>
+  dplyr::pull(icb22_name) |>
+  unique()
+
+data <- icb_names |>
+    purrr::set_names() |>
+    purrr::map(imdvizzer::map_imd_icb, include_title = FALSE)
+
+for(i in 1:length(data)){
+  
+  cat("####", data[[i]][["name"]], "\n\n")
+  
+  plt <- data[[i]][["plot"]]
+  print (plt)
+  
+  cat("\n\n", "---", "\n\n")
+  
+}
+
+cat("END")
+
+```
