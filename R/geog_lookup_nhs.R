@@ -10,6 +10,9 @@ geog_lookup_nhs <- function(){
     # add msoa names
     dplyr::left_join(geographr::lookup_lsoa11_msoa11 , by = "lsoa11_code", keep = FALSE) |>
     dplyr::rename(lsoa11_name = lsoa11_name.x) |>
-    dplyr::select(-lsoa11_name.y)
+    dplyr::select(-lsoa11_name.y) |>
+
+    # order columns from small to large geography
+    dplyr::relocate(dplyr::all_of(c("msoa11_name", "msoa11_code")), .after = lsoa11_code)
 
 }
