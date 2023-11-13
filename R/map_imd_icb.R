@@ -8,25 +8,16 @@
 map_imd_icb <- function(icb_name, include_title = TRUE) {
 
   # get the shapefile data we need
-  lsoa_bounds <- geographr::boundaries_lsoa11 |>
-    dplyr::rename(
-      lsoa11nm = "lsoa11_name",
-      lsoa11cd = "lsoa11_code"
-    )
+  lsoa_bounds <- geographr::boundaries_lsoa11
 
   # lookup between lsoa and icb
   lookup <- imdvizzer::geog_lookup_nhs() |>
-    dplyr::rename(
-      lsoa11nm = lsoa11_name,
-      lsoa11cd = lsoa11_code,
-    ) |>
     dplyr::filter(if_any("icb22_name", \(x) x == {{ icb_name }}))
 
   # join the lookup to the boundary data, and then join IMD data on
   # (it's always better to start with an sf table and add data columns to that)
   dtf <- lsoa_bounds |>
-    dplyr::inner_join(lookup, "lsoa11cd") |>
-
+    dplyr::inner_join(lookup, "lsoa11_code") |>
     sf::st_make_valid()
 
   # create a custom palette (magenta to white)
