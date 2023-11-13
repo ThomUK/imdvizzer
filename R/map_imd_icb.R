@@ -42,6 +42,7 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
     ggplot2::theme_void() +
     ggplot2::labs(
       title = ifelse(include_title, icb_name, ""),
+      subtitle = ifelse(include_title, "Indices of Multiple Deprivation (2019)", ""),
       fill = "IMD decile",
       caption = "Data Source: MHCLG"
     )
