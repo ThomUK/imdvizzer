@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # {imdvizzer}
 
-{imdvizzer} is designed to visualise England's [Index of Multiple Deprivation (IMD)](https://en.wikipedia.org/wiki/Multiple_deprivation_index) data in as many ways (or as few) as needed.  
+{imdvizzer} is designed to visualise England's [Index of Multiple Deprivation (IMD)](https://en.wikipedia.org/wiki/Multiple_deprivation_index) data in as many ways (or as few) as needed.
 
 The main data source is the [2019 IMD data from the Ministry of Housing, Communities & Local Government](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).  This data was published with a [suite of additional mapping resources](https://www.gov.uk/guidance/english-indices-of-deprivation-2019-mapping-resources).  In particular this [zoomable map](https://dclgapps.communities.gov.uk/imd/iod_index.html) may be of interest.
 
@@ -44,21 +44,17 @@ icb_names <- geographr::lookup_lsoa11_sicbl22_icb22_ltla22 |>
   dplyr::pull(icb22_name) |>
   unique()
 
-data <- icb_names |>
-    purrr::set_names() |>
-    purrr::map(imdvizzer::map_imd_icb, include_title = FALSE)
-
-for(i in 1:length(data)){
-  
-  cat("####", data[[i]][["name"]], "\n\n")
-  
-  plt <- data[[i]][["plot"]]
-  print (plt)
-  
+print_plt <- function(icb_name) {
+  cat("####", icb_name, "\n\n")
+  plt <- map_imd_icb(icb_name, include_title = FALSE)
+  print(plt)
   cat("\n\n", "---", "\n\n")
-  
 }
 
-cat("END")
+icb_names |>
+  purrr::walk(print_plt)
+
 
 ```
+
+END

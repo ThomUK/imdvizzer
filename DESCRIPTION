@@ -16,5 +16,7 @@ Imports:
     ggplot2,
     IMD (>= 1.2.2),
     sf
+Suggests:
+    purrr
 Remotes: 
     github::humaniverse
