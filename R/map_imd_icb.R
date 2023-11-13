@@ -7,11 +7,6 @@
 #' @export
 map_imd_icb <- function(icb_name, include_title = TRUE) {
 
-  # get the IMD data
-  imd <- IMD::imd_england_lsoa |>
-    dplyr::mutate(across("IMD_decile", as.factor)) |>
-    dplyr::rename(lsoa11cd = "lsoa_code")
-
   # get the shapefile data we need
   lsoa_bounds <- geographr::boundaries_lsoa11 |>
     dplyr::rename(
@@ -31,7 +26,7 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
   # (it's always better to start with an sf table and add data columns to that)
   dtf <- lsoa_bounds |>
     dplyr::inner_join(lookup, "lsoa11cd") |>
-    dplyr::left_join(imd, "lsoa11cd") |>
+
     sf::st_make_valid()
 
   # create a custom palette (magenta to white)
