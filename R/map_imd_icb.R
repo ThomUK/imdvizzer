@@ -19,9 +19,6 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
       lsoa11cd = "lsoa11_code"
     )
 
-  lsoa_bounds_valid <- lsoa_bounds |>
-    sf::st_make_valid()
-
   # lookup between lsoa and icb
   lookup <- geographr::lookup_lsoa11_sicbl22_icb22_ltla22 |>
     dplyr::select(all_of(c(lsoa11cd = "lsoa11_code", "icb22_name"))) |>
@@ -29,9 +26,10 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
 
   # join the lookup to the boundary data, and then join IMD data on
   # (it's always better to start with an sf table and add data columns to that)
-  dtf <- lsoa_bounds_valid |>
+  dtf <- lsoa_bounds |>
     dplyr::inner_join(lookup, "lsoa11cd") |>
-    dplyr::left_join(imd, "lsoa11cd")
+    dplyr::left_join(imd, "lsoa11cd") |>
+    sf::st_make_valid()
 
   # create a custom palette (magenta to white)
   imd_palette <- grDevices::colorRampPalette(c("#71196E", "#FFFFFF"))(10)
