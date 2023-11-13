@@ -6,6 +6,10 @@
 geog_lookup_nhs <- function(){
 
   lookup <- geographr::lookup_lsoa11_sicbl22_icb22_ltla22 |>
-    dplyr::select(all_of(c(lsoa11cd = "lsoa11_code", "icb22_name")))
+
+    # add msoa names
+    dplyr::left_join(geographr::lookup_lsoa11_msoa11 , by = "lsoa11_code", keep = FALSE) |>
+    dplyr::rename(lsoa11_name = lsoa11_name.x) |>
+    dplyr::select(-lsoa11_name.y)
 
 }

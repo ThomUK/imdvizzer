@@ -21,6 +21,10 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
 
   # lookup between lsoa and icb
   lookup <- imdvizzer::geog_lookup_nhs() |>
+    dplyr::rename(
+      lsoa11nm = lsoa11_name,
+      lsoa11cd = lsoa11_code,
+    ) |>
     dplyr::filter(if_any("icb22_name", \(x) x == {{ icb_name }}))
 
   # join the lookup to the boundary data, and then join IMD data on
