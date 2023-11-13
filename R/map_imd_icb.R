@@ -7,28 +7,17 @@
 #' @export
 map_imd_icb <- function(icb_name, include_title = TRUE) {
 
-  # get the IMD data
-  imd <- IMD::imd_england_lsoa |>
-    dplyr::mutate(across("IMD_decile", as.factor)) |>
-    dplyr::rename(lsoa11cd = "lsoa_code")
-
   # get the shapefile data we need
-  lsoa_bounds <- geographr::boundaries_lsoa11 |>
-    dplyr::rename(
-      lsoa11nm = "lsoa11_name",
-      lsoa11cd = "lsoa11_code"
-    )
+  lsoa_bounds <- geographr::boundaries_lsoa11
 
   # lookup between lsoa and icb
-  lookup <- geographr::lookup_lsoa11_sicbl22_icb22_ltla22 |>
-    dplyr::select(all_of(c(lsoa11cd = "lsoa11_code", "icb22_name"))) |>
+  lookup <- imdvizzer::lookup_nhs_imd() |>
     dplyr::filter(if_any("icb22_name", \(x) x == {{ icb_name }}))
 
   # join the lookup to the boundary data, and then join IMD data on
   # (it's always better to start with an sf table and add data columns to that)
   dtf <- lsoa_bounds |>
-    dplyr::inner_join(lookup, "lsoa11cd") |>
-    dplyr::left_join(imd, "lsoa11cd") |>
+    dplyr::inner_join(lookup, "lsoa11_code") |>
     sf::st_make_valid()
 
   # create a custom palette (magenta to white)
@@ -37,11 +26,12 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
   # make the plot
   dtf |>
     ggplot2::ggplot() +
-    ggplot2::geom_sf(aes(fill = dtf[["IMD_decile"]])) +
+    ggplot2::geom_sf(aes(fill = .data[["IMD_decile"]])) +
     ggplot2::scale_fill_manual(values = imd_palette) +
     ggplot2::theme_void() +
     ggplot2::labs(
       title = ifelse(include_title, icb_name, ""),
+      subtitle = ifelse(include_title, "Indices of Multiple Deprivation (2019)", ""),
       fill = "IMD decile",
       caption = "Data Source: MHCLG"
     )
