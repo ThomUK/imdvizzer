@@ -31,10 +31,6 @@ Integrated Care Board (ICB). It can be used as follows:
 library(imdvizzer)
 
 map_imd_icb("NHS Nottingham and Nottinghamshire Integrated Care Board")
-#> $name
-#> [1] "NHS Nottingham and Nottinghamshire Integrated Care Board"
-#> 
-#> $plot
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
