@@ -37,7 +37,7 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
   # make the plot
   dtf |>
     ggplot2::ggplot() +
-    ggplot2::geom_sf(aes(fill = dtf[["IMD_decile"]])) +
+    ggplot2::geom_sf(aes(fill = .data[["IMD_decile"]])) +
     ggplot2::scale_fill_manual(values = imd_palette) +
     ggplot2::theme_void() +
     ggplot2::labs(
