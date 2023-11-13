@@ -1,9 +1,9 @@
-#' A lookup table for NHS geographies
+#' A lookup table of IMDs for NHS geographies
 #'
-#' @return dataframe. A dataframe of lookup geographies, with codes and names.
+#' @return dataframe. A dataframe of IMD ranks and deciles, complete with NHS geographies, codes, and names.
 #' @export
 #'
-geog_lookup_nhs <- function(){
+lookup_nhs_imd <- function(){
 
   # get the IMD data
   imd <- IMD::imd_england_lsoa |>
