@@ -24,7 +24,7 @@ map_imd_icb <- function(icb_name, include_title = TRUE) {
   dtf |>
     ggplot2::ggplot() +
     ggplot2::geom_sf(aes(fill = .data[["IMD_decile"]])) +
-    ggplot2::scale_fill_viridis_d() +
+    ggplot2::scale_fill_viridis_d(drop = FALSE) +
     ggplot2::theme_void() +
     ggplot2::labs(
       title = ifelse(include_title, icb_name, ""),

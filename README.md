@@ -20,7 +20,11 @@ interest.
 For convenience and ease of extension {imdvizzer} uses the
 [{geographr}](https://github.com/humaniverse/geographr) package for map
 geometries and area lookup files, and the
-[{IMD}](https://github.com/humaniverse/IMD) package for IMD data.
+[{IMD}](https://github.com/humaniverse/IMD) package for IMD data. People
+working in this space may be interested to investigate two additional
+packages -
+[{NHSRpopulation}](https://github.com/nhs-r-community/NHSRpopulation)
+and [{boundr}](https://github.com/francisbarton/boundr).
 
 ## Usage
 
