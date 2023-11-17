@@ -7,7 +7,7 @@ lookup_nhs_imd <- function(){
 
   # get the IMD data
   imd <- IMD::imd_england_lsoa |>
-    dplyr::mutate(across("IMD_decile", as.factor)) |>
+    dplyr::mutate(IMD_decile = factor(IMD_decile, seq(1L, 10L))) |>
     dplyr::rename(lsoa11_code = "lsoa_code")
 
   # create the lookup with multiple joins
