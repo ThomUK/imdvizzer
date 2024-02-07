@@ -1,0 +1,35 @@
+---
+title: "Core 20 Populations"
+format: 
+  html:
+    embed-resources: true
+params:
+  m: "a slot for the leaflet object"
+  icb_name: "a slot for the icb name"
+---
+
+## `r params$icb_name`
+
+The "Core 20" populations in the ICB are highlighted red in the map below.
+
+The core 20 population is the most deprived 20% of the national population as identified by the national [Index of multiple deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
+
+The 7 domains of deprivation included in the IMD are below, with their weightings:
+
+| Domain                         | Weighting | Summary                                                                                                           |
+|---------------|--------|----------------------------------|
+| Income                         | 22.5%     | Measures the proportion of the population experiencing deprivation relating to low income                         |
+| Employment                     | 22.5%     | Measures the proportion of the working age population in an area involuntarily excluded from the labour market    |
+| Education                      | 13.5%     | Measures the lack of attainment and skills in the local population                                                |
+| Health                         | 13.5%     | Measures the risk of premature death and the impairment of quality of life through poor physical or mental health |
+| Crime                          | 9.3%      | Measures the risk of personal and material victimisation at local level                                           |
+| Barriers to Housing & Services | 9.3%      | Measures the physical and financial accessibility of housing and local services                                   |
+| Living Environment             | 9.3%      | Measures the quality of both the 'indoor' and 'outdoor' local environment                                         |
+
+```{r, fig.height = 10, fig.width = 10, echo=FALSE}
+params$m
+```
+
+------------------------------------------------------------------------
+
+END
