@@ -10,11 +10,15 @@ params:
 
 ## `r params$icb_name`
 
-The "Core 20" populations in the ICB are highlighted red in the map below.
+---
+
+The "Core 20" population in the ICB is highlighted red in the map below.
 
 The core 20 population is the most deprived 20% of the national population as identified by the national [Index of multiple deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
 
-### 7 domains of deprivation
+---
+
+### 7 Domains of Deprivation within IMD
 
 The 7 domains of deprivation which make up the IMD are detailed below, together with the weightings used.  
 
@@ -27,6 +31,7 @@ The 7 domains of deprivation which make up the IMD are detailed below, together 
 | Crime                          | 9.3%      | Measures the risk of personal and material victimisation at local level                                           |
 | Barriers to Housing & Services | 9.3%      | Measures the physical and financial accessibility of housing and local services                                   |
 | Living Environment             | 9.3%      | Measures the quality of both the 'indoor' and 'outdoor' local environment                                         |
+---
 
 ### Explorable Map
 
