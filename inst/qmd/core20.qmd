@@ -1,0 +1,56 @@
+---
+title: "Core 20 Populations"
+format: 
+  html:
+    embed-resources: true
+params:
+  m: "a slot for the leaflet object"
+  icb_name: "a slot for the icb name"
+---
+
+## `r params$icb_name`
+
+---
+
+The "Core 20" population in the ICB is highlighted red in the map below.
+
+The core 20 population is the most deprived 20% of the national population as identified by the national [Index of multiple deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019).
+
+---
+
+### 7 Domains of Deprivation within IMD
+
+The 7 domains of deprivation which make up the IMD are detailed below, together with the weightings used.  
+
+| Domain                         | Weighting | Summary                                                                                                           |
+|---------------|--------|----------------------------------|
+| Income                         | 22.5%     | Measures the proportion of the population experiencing deprivation relating to low income                         |
+| Employment                     | 22.5%     | Measures the proportion of the working age population in an area involuntarily excluded from the labour market    |
+| Education                      | 13.5%     | Measures the lack of attainment and skills in the local population                                                |
+| Health                         | 13.5%     | Measures the risk of premature death and the impairment of quality of life through poor physical or mental health |
+| Crime                          | 9.3%      | Measures the risk of personal and material victimisation at local level                                           |
+| Barriers to Housing & Services | 9.3%      | Measures the physical and financial accessibility of housing and local services                                   |
+| Living Environment             | 9.3%      | Measures the quality of both the 'indoor' and 'outdoor' local environment                                         |
+---
+
+### Explorable Map
+
+Please click and zoom to areas of interest to explore the "core 20" population.  LSOAs reporesenting the "Core 20" population are highlighted in red.  
+
+```{r, fig.height = 8, fig.width = 8, echo=FALSE}
+params$m
+```
+
+---
+
+### Guidance Notes
+
+1.  The IMD ranking used here is the national ranking, giving the most deprived 20% of the national population.  
+
+2.  An alternative method (which we can develop if needed) is to rank on a local basis, which would allow us to understand the most deprived 20% of the local population, relative only to the rest of the local population.  
+
+3.  The geometries used in the mapping are [LSOAs](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeographies/census2021geographies#lower-layer-super-output-areas-lsoas), which are populations of an approximately similar size (between 1000 and 3000 people).  
+
+------------------------------------------------------------------------
+
+END

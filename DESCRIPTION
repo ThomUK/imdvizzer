@@ -19,4 +19,4 @@ Imports:
 Suggests:
     purrr
 Remotes: 
-    github::humaniverse
+    humaniverse/geographr
